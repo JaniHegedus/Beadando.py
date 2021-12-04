@@ -8,13 +8,13 @@ Rendeles és Prices txt fájl melyek módosításával módosul a program adatb�
 [my_files]\
 txt_file = Rendeles.txt\
 input_file=Ettermek.txt\
-input_file0=Prices.txt\
+input_file0=Prices.txt
 
 [Text]\
 text_type= Arial\
 Text_color =blue\
 Bg_color = white\
-Important_text_color=Red\
+Important_text_color=Red
 
 [other]\
 Text_size=25\
