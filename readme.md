@@ -22,4 +22,4 @@ Buttonsize_x=40\
 Buttonsize_y=10\
 Fullscreen = True
 
-Opciók átállításával lehet változtatni a program megjelenítésében
+Opciók átállításával le/het változtatni a program megjelenítésében
