@@ -1,0 +1,29 @@
+sonkás pizza	990
+szalámis pizza	990
+sonkás-gombás pizza	1090
+margaréta pizza	790
+kebab box	850
+kebab pita	750
+gyros tál	1250
+gyros pitában	950
+mindenes pizza	1450
+ananászos pizza	1290
+tonhalas pizza	1390
+rákos pizza	1490
+extra-sajtos hamburger	950	
+dupla-húsos hamburger 950
+extra-csípős hamburger	850
+sajtos hamburger	420
+ketchup	50
+majonéz	50
+barbeque	60
+fokhagymás	75
+sültkrumpli	250
+csípős	50
+saláta	150
+krokett	350
+sprite	200
+fanta	210
+dr.pepper	260
+kóla	190
+tea	150

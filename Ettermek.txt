@@ -1,0 +1,27 @@
+Fredy's-Fazbear Pizza
+-
+sonkás pizza	ketchup	kóla	1200Ft
+szalámis pizza	majonéz	sprite	1400Ft
+sonkás-gombás pizza	barbeque	tea	1500Ft
+margaréta pizza	fokhagymás	fanta	1600Ft
+
+Marina Gyros
+-
+kebab box	sültkrumpli	kóla	1100Ft
+kebab pita	csípős	sprite	1450Ft
+gyros tál	saláta	fanta	1600Ft
+gyros pitában	krokett	dr.pepper	900Ft
+
+Domino's Pizza
+-
+mindenes pizza	ketchup	sprite	1100Ft
+ananászos pizza	barbeque	dr.pepper	1440Ft
+tonhalas pizza	fokhagymás	dr.pepper	1090Ft
+rákos pizza	majonéz	sprite	1500Ft
+
+Bob's Burger
+-
+extra-sajtos hamburger	sültkrumpli	kóla	900Ft
+dupla-húsos hamburger	sültkrumpli	kóla	1300Ft
+extra-csípős hamburger	sültkrumpli	kóla	1550Ft
+sajtos hamburger	sültkrumpli	kóla	1750Ft
