@@ -44,7 +44,7 @@ Koretek = []
 Italok = []
 AR = []
 ARAK = []
-
+#config fájl beolvasása:
 config = configparser.ConfigParser()
 config.sections()
 config.read('config.ini')
@@ -76,7 +76,6 @@ highlightcolor_entry = config['Entry']['highlightcolor_entry']
 highlightthickness_entry = int(config['Entry']['highlightthickness_entry'])
 bd_entry = int(config['Entry']['bd_entry'])
 
-FontOfEntryList = tkf.Font(family=text_type_entry, size=text_size_entry)
 
 for o in range(10):
     root.columnconfigure(o, minsize=25)
@@ -415,6 +414,7 @@ def kepernyo():
     global c
     hetnapjaa = int(datetime.today().weekday())
     oraa = int(datetime.now().strftime("%H"))
+    FontOfEntryList = tkf.Font(family=text_type_entry, size=text_size_entry)
 
     entry0 = tk.StringVar()
     entry1 = tk.StringVar()
