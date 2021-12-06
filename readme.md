@@ -38,3 +38,5 @@ Fullscreen = True
 
 
 Opciók átállításával lehet változtatni a program megjelenítésében
+
+A bat file-t futtatva IDE nélkül is használható a rpogram.
