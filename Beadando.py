@@ -61,7 +61,7 @@ Bg_color = config['Text']['Bg_color']
 x = int(config['other']['Buttonsize_x'])
 y = int(config['other']['Buttonsize_y'])
 
-fullscreen = bool(config['other']['Fullscreen'])
+fullscreen = config['other']['Fullscreen']
 
 justify_entry = config['Entry']['justify_entry']
 text_type_entry = config['Entry']['text_type_entry']
@@ -757,11 +757,20 @@ def grandtotal():
     Menu_8_Button = Button(root, text="Megrendelem", padx=x, pady=y, command=Megrendelem, fg=Text_color, bg=Bg_color,
                            font=(text_type, ts)).grid(row=c, column=2)
 
+    Menu_8_Button = Button(root, text="Rendelés törlése", padx=x, pady=y, command=Megrendelem, fg=Text_color, bg=Bg_color,
+                           font=(text_type, ts)).grid(row=c, column=1)
 
 def Megrendelem():
     os.startfile(txt_file)
-    root.quit()
+    root.destroy()
+def Rendeles_torles():
+    global c
+    clear_screen_lower()
+    os.remove("Rendeles.txt")
+    Kattintas0 = Label(root, text="A Rendelés törlésre került!", font=(text_type, ts)).grid(row=c, columnspan=5)
 
+if __name__ == "__main__":
 
-kepernyo()
-root.mainloop()
+    kepernyo()
+    root.mainloop()
+    quit()
