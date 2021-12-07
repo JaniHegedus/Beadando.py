@@ -9,7 +9,7 @@ import os
 
 root = Tk()
 root.title("Ételrendelés")
-
+root.iconbitmap('my_ico.ico')
 """
 ts=25
 x=40
@@ -60,7 +60,7 @@ Important_text_color = config['Text']['Important_text_color']
 Bg_color = config['Text']['Bg_color']
 x = int(config['other']['Buttonsize_x'])
 y = int(config['other']['Buttonsize_y'])
-
+nyitva=0
 fullscreen = config['other']['Fullscreen']
 
 justify_entry = config['Entry']['justify_entry']
@@ -340,38 +340,34 @@ def Nyitva(hetnapja, ora, nyitashk=8, nyitashv=10, zarashk=22, zarashv=20, nyitv
 def clear_screen():
     a = 2
     g = 1
-    Menu1 = Label(root, text="                         ", font=(text_type, ts)).grid(row=a, column=0)
-    Menu1_1 = Label(root, text="                         ", font=(text_type, ts)).grid(row=a, column=1)
-    Menu1_2 = Label(root, text="                         ", font=(text_type, ts)).grid(row=a, column=2)
-    Menu1_3 = Label(root, text="                         ", font=(text_type, ts)).grid(row=a, column=3)
+    Menu1 = Label(root, text="                                          ", font=(text_type, ts)).grid(row=a, column=0)
+    Menu1_1 = Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=1)
+    Menu1_2 = Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=2)
+    Menu1_3 = Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=3)
     a += 1
     g += 1
-    Menu2 = Label(root, text="                         ", font=(text_type, ts)).grid(row=a, column=0)
-    Menu2_1 = Label(root, text="                         ", font=(text_type, ts)).grid(row=a, column=1)
-    Menu2_2 = Label(root, text="                         ", font=(text_type, ts)).grid(row=a, column=2)
-    Menu2_3 = Label(root, text="                         ", font=(text_type, ts)).grid(row=a, column=3)
+    Menu2 = Label(root, text="                                          ", font=(text_type, ts)).grid(row=a, column=0)
+    Menu2 = Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=1)
+    Menu2 = Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=2)
+    Menu2 = Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=3)
     a += 1
     g += 1
-    Menu3 = Label(root, text="                         ", font=(text_type, ts)).grid(row=a, column=0)
-    Menu3_1 = Label(root, text="                         ", font=(text_type, ts)).grid(row=a, column=1)
-    Menu3_2 = Label(root, text="                         ", font=(text_type, ts)).grid(row=a, column=2)
-    Menu3_3 = Label(root, text="                         ", font=(text_type, ts)).grid(row=a, column=3)
+    Menu3 = Label(root, text="                                          ", font=(text_type, ts)).grid(row=a, column=0)
+    Menu3 = Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=1)
+    Menu3 = Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=2)
+    Menu3 = Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=3)
     a += 1
     g += 1
-    Menu4 = Label(root, text="                         ", font=(text_type, ts)).grid(row=a, column=0)
-    Menu4_1 = Label(root, text="                         ", font=(text_type, ts)).grid(row=a, column=1)
-    Menu4_2 = Label(root, text="                         ", font=(text_type, ts)).grid(row=a, column=2)
-    Menu4_3 = Label(root, text="                         ", font=(text_type, ts)).grid(row=a, column=3)
-
-
-def clear_screen_lower():
-    global c
-    Kattintas0 = Label(root, text="                         ", font=(text_type, ts)).grid(row=c, column=0)
-    Kattintas0 = Label(root, text="                         ", font=(text_type, ts)).grid(row=c, column=1)
-    Kattintas0 = Label(root, text="                         ", font=(text_type, ts)).grid(row=c, column=2)
-    Kattintas0 = Label(root, text="                         ", font=(text_type, ts)).grid(row=c, column=3)
-    Kattintas0 = Label(root, text="                         ", font=(text_type, ts)).grid(row=c, column=4)
-    Kattintas0 = Label(root, text="                         ", font=(text_type, ts)).grid(row=c, column=5)
+    Menu4 = Label(root, text="                                          ", font=(text_type, ts)).grid(row=a, column=0)
+    Menu4 = Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=1)
+    Menu4 = Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=2)
+    Menu4 = Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=3)
+def clear_menu():
+    a = 12
+    Menu1 = Label(root, text="                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n", font=(text_type, ts)).grid(row=a, column=0)
+    Menu1 = Label(root, text="                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n", font=(text_type, ts)).grid(row=a, column=1)
+    Menu1 = Label(root, text="                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n", font=(text_type, ts)).grid(row=a, column=2)
+    Menu1 = Label(root, text="                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n", font=(text_type, ts)).grid(row=a, column=3)
 
 
 def etlap_frissit():
@@ -400,7 +396,9 @@ def etlap_frissit():
     Menu4_1 = Label(root, text=Menü().koret(b, g), font=(text_type, ts)).grid(row=a, column=1)
     Menu4_2 = Label(root, text=Menü().ital(b, g), font=(text_type, ts)).grid(row=a, column=2)
     Menu4_3 = Label(root, text=Menü().ar(b, g), font=(text_type, ts)).grid(row=a, column=3)
-    Kattintas0 = Label(root, text="                         ", font=(text_type, ts)).grid(row=0, column=2)
+    Kattintas0 = Label(root, text="                                      ", font=(text_type, ts)).grid(row=0, column=2)
+
+
     Menu_0 = Label(root, text=Étterem().nev(b), font=(text_type, ts)).grid(row=0, column=2)
 
 
@@ -412,6 +410,7 @@ if rendelt > 0:
 
 def kepernyo():
     global c
+    clear_menu()
     hetnapjaa = int(datetime.today().weekday())
     oraa = int(datetime.now().strftime("%H"))
     FontOfEntryList = tkf.Font(family=text_type_entry, size=text_size_entry)
@@ -539,7 +538,7 @@ def b_novelo():
     clear_screen()
     etlap_frissit()
 
-    Kattintas0 = Label(root, text="                         ", font=(text_type, ts)).grid(row=0, column=2)
+    Kattintas0 = Label(root, text="                                      ", font=(text_type, ts)).grid(row=0, column=2)
     Menu_0 = Label(root, text=Étterem().nev(b), font=(text_type, ts)).grid(row=0, column=2)
     # print(b)
     if rendelt > 0:
@@ -604,7 +603,7 @@ def Calculate():
 
 def sajatmenu():
     global c
-    clear_screen_lower()
+    clear_menu()
     entry0 = Menu5_1.get()
     entry1 = Menu5_2.get()
     entry2 = Menu5_3.get()
@@ -634,7 +633,7 @@ def kiir():
 def Menu01():
     global rendelt
     rendelt += 1
-    clear_screen_lower()
+    clear_menu()
     for sor in Menü().Menu_1():
         with io.open(txt_file, "a", encoding="utf-8") as fki:
             fki.write(sor)
@@ -647,7 +646,7 @@ def Menu01():
 def Menu02():
     global rendelt
     rendelt += 1
-    clear_screen_lower()
+    clear_menu()
     print(Menü().Menu_2())
     for sor in Menü().Menu_2():
         with io.open(txt_file, "a", encoding="utf-8") as fki:
@@ -660,7 +659,7 @@ def Menu02():
 def Menu03():
     global rendelt
     rendelt += 1
-    clear_screen_lower()
+    clear_menu()
     for sor in Menü().Menu_3():
         with io.open(txt_file, "a", encoding="utf-8") as fki:
             fki.write(sor)
@@ -674,7 +673,7 @@ def Menu03():
 def Menu04():
     global rendelt
     rendelt += 1
-    clear_screen_lower()
+    clear_menu()
     for sor in Menü().Menu_4():
         with io.open(txt_file, "a", encoding="utf-8") as fki:
             fki.write(sor)
@@ -685,52 +684,69 @@ def Menu04():
 
 
 def Menu05():
-    clear_screen_lower()
+    clear_menu()
     Kattintas0 = Label(root, text="A nyitvatartás hétköznap: {0}".format(Nyitvatartás().Hétköznap()),
                        font=(text_type, ts)).grid(row=c, columnspan=5)
 
 
 def Menu06():
-    clear_screen_lower()
+    clear_menu()
     Kattintas0 = Label(root, text="A nyitvatartás hétvégén: {0}".format(Nyitvatartás().Hétvége()),
                        font=(text_type, ts)).grid(row=c, columnspan=5)
 
 
 def Ételek_Italok():
+    global nyitva
+
     global c
     c = 12
     global b
     b -= 1
-    clear_screen_lower()
-    foetelek = ""
-    koretek = ""
-    italok = ""
+    clear_menu()
+    oszlop_0 = ""
+    oszlop_1 = ""
+    oszlop_2 = ""
+    oszlop_3 = ""
+    oszlop_4 = ""
     db = 0
-    for elem in Foetelek[b]:
-        foetelek += elem
-        if db % 2 == 0:
-            foetelek += " "
-            db += 1
-        else:
-            foetelek += "\n"
-            db += 1
-    for elem in Koretek[b]:
-        koretek += elem
-        koretek += "\n"
-    for elem in Italok[b]:
-        italok += elem
-        italok += "\n"
-
-    Kattintas1 = Label(root, text=foetelek, font=(text_type, ts)).grid(row=c, column=0)
-    Kattintas1 = Label(root, text=koretek, font=(text_type, ts)).grid(row=c, column=1)
-    Kattintas1 = Label(root, text=italok, font=(text_type, ts)).grid(row=c, column=2)
+    try:
+        for sor in matrix0:
+            if len(sor)==3:
+                if db<6:
+                    oszlop_0+=sor[0]+" "+sor[1]+" \n "+sor[2]+"Ft\n"
+                elif db >= 6 and db < 11:
+                    oszlop_1+=sor[0]+" "+sor[1]+" \n "+sor[2]+"Ft\n"
+                elif db >= 11 and db < 16:
+                    oszlop_2+=sor[0]+" "+sor[1]+" \n "+sor[2]+"Ft\n"
+                elif db >= 16:
+                    oszlop_3+=sor[0]+" "+sor[1]+" \n "+sor[2]+"Ft\n"
+            else:
+                if db<6:
+                    oszlop_0+=sor[0]+" "+sor[1]+" - "+sor[2]+"Ft\n"
+                elif db >= 6 and db < 11:
+                    oszlop_1+=sor[0]+" - "+sor[1]+"Ft\n"
+                elif db >= 11 and db < 16:
+                    oszlop_2+=sor[0]+" - "+sor[1]+"Ft\n"
+                elif db >= 16 and  db <20:
+                    oszlop_3+=sor[0]+" - "+sor[1]+"Ft\n"
+            db+=1
+    except IndexError:
+        b=4
+    Kattintas1 = Label(root, text=oszlop_0, font=(text_type, ts)).grid(row=c, column=0)
+    Kattintas1 = Label(root, text=oszlop_1, font=(text_type, ts)).grid(row=c, column=1)
+    Kattintas1 = Label(root, text=oszlop_2, font=(text_type, ts)).grid(row=c, column=2)
+    Kattintas1 = Label(root, text=oszlop_3, font=(text_type, ts)).grid(row=c, column=3)
+    if nyitva==0:
+        nyitva=1
+    elif nyitva==1:
+        nyitva=0
+        clear_menu()
     # Kattintas1 = Label(root, text= ,font=(text_type, ts)).grid(row=c,column=3)
-    fki.close()
 
 
 def grandtotal():
     global c
-    clear_screen_lower()
+    clear_menu()
 
     lista = []
     fbe = open(txt_file, "r")
@@ -742,15 +758,27 @@ def grandtotal():
         lista.append(kis_lista)
     global grand_total
     grand_total = 0
-    for sor in lista:
-        if len(sor) > 4:
-            if sor[4] != "0Ft":
-                if len(sor[4]) > 5:
-                    print(int(sor[4][:4]))
-                    grand_total += int(sor[4][:4])
+    clear_menu()
+    clear_screen()
+    try:
+        for sor in lista:
+            if len(sor) > 4:
+                if sor[4] != "0Ft":
+                    if len(sor[4]) > 5:
+                        print(int(sor[4][:4]))
+                        grand_total += int(sor[4][:4])
+                    else:
+                        print(int(sor[4][:3]))
+                        grand_total += int(sor[4][:3])
+    except IndexError:
+        if len(sor) > 3:
+            if sor[3] != "0Ft":
+                if len(sor[3]) > 4:
+                    print(int(sor[3][:3]))
+                    grand_total += int(sor[3][:4])
                 else:
-                    print(int(sor[4][:3]))
-                    grand_total += int(sor[4][:3])
+                    print(int(sor[3][:3]))
+                    grand_total += int(sor[3][:3])
     Kattintas0 = Label(root, text=str(grand_total) + "Ft fizetendő a futárnál", font=(text_type, ts)).grid(row=c,
                                                                                                            columnspan=5)
     c += 1
@@ -765,12 +793,12 @@ def Megrendelem():
     root.destroy()
 def Rendeles_torles():
     global c
-    clear_screen_lower()
+    clear_menu()
     os.remove("Rendeles.txt")
     Kattintas0 = Label(root, text="A Rendelés törlésre került!", font=(text_type, ts)).grid(row=c, columnspan=5)
 
 if __name__ == "__main__":
-
     kepernyo()
     root.mainloop()
+    fki.close()
     quit()

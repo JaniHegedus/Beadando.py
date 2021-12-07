@@ -39,4 +39,6 @@ Fullscreen = True
 
 Opciók átállításával lehet változtatni a program megjelenítésében
 
-A bat file-t futtatva IDE nélkül is használható a rpogram.
+A futtatásnál fontos, hogy a Scale a Windows-ban 100%\
+és a felbontás 1920x1080 legyen különben,\
+a config.ini ben változtatásokat kell ejteni!
