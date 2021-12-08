@@ -1,25 +1,29 @@
-from datetime import datetime
-from tkinter import *
-import tkinter.font as tkf
-from enum import Enum
-import tkinter as tk
-import configparser
-import io
-import os
+#Szükséges függvények importálása:
+from datetime import datetime #idő
+from tkinter import * #Grafikus
+import tkinter.font as tkf #Grafikus karakterváltoztatás Entry-hez
+from enum import Enum #Enum
+import tkinter as tk #Grafikus
+import configparser #config file olvasó
+import io #file olvasás írás
+import os #file megnyitás törlés
 
-root = Tk()
-root.title("Ételrendelés")
-root.iconbitmap('my_ico.ico')
-"""
+#config fájl beolvasása:
+config = configparser.ConfigParser()
+config.sections()
+config.read('config.ini')
+config.sections()
+
+""" ALAP VÁLTOZÓK DEFINIÁLÁSA CONFIG FILE NÉLKÜL
 ts=25
 x=40
 y=10
 text_type="Arial"
 Text_color="blue"
 Bg_color="white"
-txt_file="Rendelés.csv"
-input_file="Ettermek.csv"
-input_file0="Prices.csv"
+txt_file="Rendelés.txt"
+input_file="Ettermek.txt"
+input_file0="Prices.txt"
 input_file1="Nyitvatartas.txt"
 justify_entry="center"
 text_type_entry="Arial"
@@ -35,7 +39,13 @@ highlightthickness_entry=1
 bd_entry=0
 encoding_in="utf-8"
 encoding_out="utf-8"
+root.title("Ételrendelés")
+root.iconbitmap('my_ico.ico')
 """
+#Listák/Mátrixok/Változók definiálása:
+b = 1
+rendelt = 1
+nyitva=0
 matrix = []
 matrix0 = []
 matrix1 = []
@@ -45,11 +55,11 @@ Koretek = []
 Italok = []
 AR = []
 ARAK = []
-#config fájl beolvasása:
-config = configparser.ConfigParser()
-config.sections()
-config.read('config.ini')
-config.sections()
+
+
+#Változódefiniálás
+root_title = config['root']['root_title']
+root_icon = config['root']['root_icon']
 
 txt_file = config['my_files']['txt_file']
 input_file = config['my_files']['input_file']
@@ -63,7 +73,6 @@ Important_text_color = config['Text']['Important_text_color']
 Bg_color = config['Text']['Bg_color']
 x = int(config['other']['Buttonsize_x'])
 y = int(config['other']['Buttonsize_y'])
-nyitva=0
 fullscreen = config['other']['Fullscreen']
 
 justify_entry = config['Entry']['justify_entry']
@@ -79,15 +88,20 @@ highlightcolor_entry = config['Entry']['highlightcolor_entry']
 highlightthickness_entry = int(config['Entry']['highlightthickness_entry'])
 bd_entry = int(config['Entry']['bd_entry'])
 
+root = Tk()
+root.title(root_title)
+root.iconbitmap(root_icon)
 
-for o in range(10):
+for o in range(14): #sorbeállítás
     root.columnconfigure(o, minsize=25)
-root.overrideredirect(fullscreen)
+
+root.overrideredirect(fullscreen) #Teljesképernyő ki/be
+
 if fullscreen:
     root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))
 else:
     root.geometry("1920x740")
-
+#File beolvasás
 with io.open(input_file, "r", encoding=encoding_in) as fbee:
     for sor in fbee:
         kis_lista = []
@@ -95,6 +109,7 @@ with io.open(input_file, "r", encoding=encoding_in) as fbee:
         for elem in sor:
             kis_lista.append(elem)
         matrix.append(kis_lista)
+    fbee.close()
 with io.open(input_file0, "r", encoding=encoding_in) as fbeee:
     for sor in fbeee:
         kis_lista = []
@@ -102,67 +117,54 @@ with io.open(input_file0, "r", encoding=encoding_in) as fbeee:
         for elem in sor:
             kis_lista.append(elem)
         matrix0.append(kis_lista)
+    fbeee.close()
 
+#Listák feltöltése
 for j in range(len(matrix)):
     kis_lista = []
+    kis_lista0 = []
+    kis_lista1 = []
+    kis_lista2 = []
+    kis_lista3 = []
     for i in range(len(matrix[j])):
         if matrix[j][i] == '-':
             kis_lista.append(matrix[j - 1][len(matrix[j]) - 1])
             kis_lista.append(matrix[j - 1][len(matrix[j])])
+            for k in range(1, 5):
+                kis_lista0.append(matrix[j + k][0])
+                kis_lista0.append(matrix[j + k][1])
+                kis_lista1.append(matrix[j + k][2])
+                kis_lista2.append(matrix[j + k][3])
+                kis_lista3.append(matrix[j + k][4])
+        """
+        kis_lista.append(matrix[k + 2][0])
+        kis_lista.append(matrix[k + 2][1])
+        kis_lista.append(matrix[k + 3][0])
+        kis_lista.append(matrix[k + 3][1])
+        kis_lista.append(matrix[k + 4][0])
+        kis_lista.append(matrix[k + 4][1])
+        kis_lista0.append(matrix[k + 2][2])
+        kis_lista0.append(matrix[k + 3][2])
+        kis_lista0.append(matrix[k + 4][2])
+        kis_lista1.append(matrix[k + 2][3])
+        kis_lista1.append(matrix[k + 3][3])
+        kis_lista1.append(matrix[k + 4][3])
+        kis_lista2.append(matrix[k + 2][4])
+        kis_lista2.append(matrix[k + 3][4])
+        kis_lista2.append(matrix[k + 4][4])
+        """
+        if kis_lista:
+            Foetelek.append(kis_lista0)
+        if kis_lista0:
+            Koretek.append(kis_lista1)
+        if kis_lista1:
+            Italok.append(kis_lista2)
+        if kis_lista2:
+            AR.append(kis_lista3)
     if kis_lista:
         Ettermek.append(kis_lista)
-for k in range(len(matrix)):
-    for l in range(len(matrix[k])):
-        kis_lista = []
-        kis_lista0 = []
-        kis_lista1 = []
-        kis_lista2 = []
-        if matrix[k][l] == '-':
-            kis_lista.append(matrix[k + 1][0])
-            kis_lista.append(matrix[k + 1][1])
-            kis_lista.append(matrix[k + 2][0])
-            kis_lista.append(matrix[k + 2][1])
-            kis_lista.append(matrix[k + 3][0])
-            kis_lista.append(matrix[k + 3][1])
-            kis_lista.append(matrix[k + 4][0])
-            kis_lista.append(matrix[k + 4][1])
-            kis_lista0.append(matrix[k + 1][2])
-            kis_lista0.append(matrix[k + 2][2])
-            kis_lista0.append(matrix[k + 3][2])
-            kis_lista0.append(matrix[k + 4][2])
-            kis_lista1.append(matrix[k + 1][3])
-            kis_lista1.append(matrix[k + 2][3])
-            kis_lista1.append(matrix[k + 3][3])
-            kis_lista1.append(matrix[k + 4][3])
-            kis_lista2.append(matrix[k + 1][4])
-            kis_lista2.append(matrix[k + 2][4])
-            kis_lista2.append(matrix[k + 3][4])
-            kis_lista2.append(matrix[k + 4][4])
-        if kis_lista:
-            Foetelek.append(kis_lista)
-        if kis_lista0:
-            Koretek.append(kis_lista0)
-        if kis_lista1:
-            Italok.append(kis_lista1)
-        if kis_lista2:
-            AR.append(kis_lista2)
 
-"""  ***DEBUG***
-print(matrix)
-print(matrix0)
-print(matrix1)
-print(Ettermek)
-print(Foetelek)
-print(Koretek)
-print(Italok)
-print(AR)
-"""
-global b
-b = 1
-global rendelt
-rendelt = 1
-
-
+#Classek létrehozása
 class Étterem():
     def __init__(self, et=" "):
         self.et = et
@@ -191,7 +193,6 @@ class Étterem():
             self.et+=Ettermek[3][1]
         """
         return self.et
-
 
 class Menü(Étterem):
     def __init__(self):
@@ -278,7 +279,6 @@ class Menü(Étterem):
     def Menu_4(self):
         return Menü().foetel(b, 4) + " " + Menü().koret(b, 4) + " " + Menü().ital(b, 4) + " " + Menü().ar(b, 4)
 
-
 class Nyitvatartás(Étterem):
     def __init__(self, nyitashk=8, nyitashv=10, zarashk=22, zarashv=20, nyitva=False):
         self.et = Étterem.__init__(self)
@@ -313,7 +313,7 @@ class Nyitvatartás(Étterem):
     """
 
 
-class Napok(Enum):
+class Napok(Enum): #Enum használat (primitív de van)
     Hétfő = 0
     Kedd = 1
     Szerda = 2
@@ -323,14 +323,14 @@ class Napok(Enum):
     Vasárnap = 6
 
 
-def Mai_Nap() -> str:
+def Mai_Nap() -> str: #(Ez a függvény nem akart classben működni)
     dt = int(datetime.today().weekday())
     for i in range(7):
         if i == dt:
             return Napok(i).name
 
 
-def Nyitva(hetnapja, ora, nyitashk=8, nyitashv=10, zarashk=22, zarashv=20, nyitva=False):
+def Nyitva(hetnapja, ora, nyitashk=8, nyitashv=10, zarashk=22, zarashv=20, nyitva=False): #(Ezse)
     if hetnapja <= 4:
         if ora >= nyitashk and ora <= zarashk:
             nyitva = True
@@ -340,7 +340,7 @@ def Nyitva(hetnapja, ora, nyitashk=8, nyitashv=10, zarashk=22, zarashv=20, nyitv
     return nyitva
 
 
-def clear_screen():
+def clear_screen(): #Grafikus megjelenítésen a tartalom törlése, mivel nem találtam label törlő lehetőséget
     a = 2
     g = 1
     Menu1 = Label(root, text="                                          ", font=(text_type, ts)).grid(row=a, column=0)
@@ -365,7 +365,7 @@ def clear_screen():
     Menu4 = Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=1)
     Menu4 = Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=2)
     Menu4 = Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=3)
-def clear_menu():
+def clear_menu(): #Grafikus megjelenítésen a tartalom törlése, mivel nem találtam label törlő lehetőséget
     a = 12
     Menu1 = Label(root, text="                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n", font=(text_type, ts)).grid(row=a, column=0)
     Menu1 = Label(root, text="                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n", font=(text_type, ts)).grid(row=a, column=1)
@@ -373,7 +373,7 @@ def clear_menu():
     Menu1 = Label(root, text="                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n                                           \n", font=(text_type, ts)).grid(row=a, column=3)
 
 
-def etlap_frissit():
+def etlap_frissit(): #Ételek frissítése az éttermek közötti ugrálás után
     global b
     a = 2
     g = 1
@@ -405,13 +405,13 @@ def etlap_frissit():
     Menu_0 = Label(root, text=Étterem().nev(b), font=(text_type, ts)).grid(row=0, column=2)
 
 
-if rendelt > 0:
+if rendelt > 0: #Ha rendelt az adott étteremből akkor kiírja az étterem nevét
     with io.open(txt_file, "w", encoding=encoding_out) as fki:
         fki.write(Étterem().nev(b) + "\n")
         rendelt = 0
 
 
-def kepernyo():
+def kepernyo(): #A grafikus felület megjelenítése
     global c
     clear_menu()
     hetnapjaa = int(datetime.today().weekday())
@@ -516,7 +516,7 @@ def kepernyo():
                            bg=Bg_color, font=(text_type, ts)).grid(row=a, column=0)
 
 
-def b_csokkento():
+def b_csokkento(): #Éttermek közötti ugrálás
     global b
     global rendelt
     if b == 1:
@@ -531,7 +531,7 @@ def b_csokkento():
         rendelt = 0
 
 
-def b_novelo():
+def b_novelo(): #Éttermek közötti ugrálás
     global b
     global rendelt
     if b == 4:
@@ -550,7 +550,7 @@ def b_novelo():
         rendelt = 0
 
 
-def Calculate():
+def Calculate(): #Saját menü számítása
     entry0 = Menu5_1.get()
     entry1 = Menu5_2.get()
     entry2 = Menu5_3.get()
@@ -604,7 +604,7 @@ def Calculate():
     """
 
 
-def sajatmenu():
+def sajatmenu(): #Saját menü meg
     global c
     clear_menu()
     entry0 = Menu5_1.get()
@@ -626,13 +626,13 @@ def sajatmenu():
     print(kiir())
 
 
-def kiir():
+def kiir(): #Sajátmenü fájlbaírása
     with io.open(txt_file, "a", encoding=encoding_out) as fki:
         fki.write(sajatmenu.foetel + " " + sajatmenu.koret + " " + sajatmenu.ital + " " + sajatmenu.ar + "\n")
     # fki.write()
     return sajatmenu.foetel, sajatmenu.koret, sajatmenu.ital, sajatmenu.ar
 
-
+#A gombok függvényei:
 def Menu01():
     global rendelt
     rendelt += 1
@@ -645,7 +645,6 @@ def Menu01():
     Kattintas0 = Label(root, text="Az első menüt választotta!", font=(text_type, ts)).grid(row=c, columnspan=5)
     print(Menü().Menu_3())
 
-
 def Menu02():
     global rendelt
     rendelt += 1
@@ -657,7 +656,6 @@ def Menu02():
     with io.open(txt_file, "a", encoding=encoding_out) as fki:
         fki.write("\n")
     Kattintas0 = Label(root, text="A második menüt választotta!", font=(text_type, ts)).grid(row=c, columnspan=5)
-
 
 def Menu03():
     global rendelt
@@ -672,7 +670,6 @@ def Menu03():
     print(Menü().Menu_3())
     Kattintas0 = Label(root, text="A harmadik menüt választotta!", font=(text_type, ts)).grid(row=c, columnspan=5)
 
-
 def Menu04():
     global rendelt
     rendelt += 1
@@ -685,12 +682,10 @@ def Menu04():
     print(Menü().Menu_4())
     Kattintas0 = Label(root, text="A negyedik menüt választotta!", font=(text_type, ts)).grid(row=c, columnspan=5)
 
-
 def Menu05():
     clear_menu()
     Kattintas0 = Label(root, text="A nyitvatartás hétköznap: {0}".format(Nyitvatartás().Hétköznap()),
                        font=(text_type, ts)).grid(row=c, columnspan=5)
-
 
 def Menu06():
     clear_menu()
@@ -698,7 +693,7 @@ def Menu06():
                        font=(text_type, ts)).grid(row=c, columnspan=5)
 
 
-def Ételek_Italok():
+def Ételek_Italok(): #A lehetséges választható Ételek és Italok megjelenítése és eltüntetése függvény
     global nyitva
 
     global c
@@ -747,7 +742,7 @@ def Ételek_Italok():
     # Kattintas1 = Label(root, text= ,font=(text_type, ts)).grid(row=c,column=3)
 
 
-def grandtotal():
+def grandtotal(): #Végső Fizetendő Ár kiszámító a Rendelés file-ból
     global c
     clear_menu()
 
@@ -791,15 +786,29 @@ def grandtotal():
     Menu_8_Button = Button(root, text="Rendelés törlése", padx=x, pady=y, command=Megrendelem, fg=Text_color, bg=Bg_color,
                            font=(text_type, ts)).grid(row=c, column=1)
 
-def Megrendelem():
+
+def Megrendelem(): #Végső Fizetendő Ár kiszámító a Rendelés file-ból
     os.startfile(txt_file)
     root.destroy()
-def Rendeles_torles():
+
+def Rendeles_torles(): #Rendelés törlése és Visszaigazolás
     global c
     clear_menu()
     os.remove(txt_file)
     Kattintas0 = Label(root, text="A Rendelés törlésre került!", font=(text_type, ts)).grid(row=c, columnspan=5)
 
+"""  ***DEBUG***
+print(matrix)
+print(matrix0)
+print(matrix1)
+print(Ettermek)
+print(Foetelek)
+print(Koretek)
+print(Italok)
+print(AR)
+"""
+
+#Main függvény: Emódon futtatható a program console ból illetve EXE/Batch fileként
 if __name__ == "__main__":
     kepernyo()
     root.mainloop()
