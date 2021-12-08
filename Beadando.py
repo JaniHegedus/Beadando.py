@@ -17,9 +17,9 @@ y=10
 text_type="Arial"
 Text_color="blue"
 Bg_color="white"
-txt_file="Rendelés.txt"
-input_file="Ettermek.txt"
-input_file0="Prices.txt"
+txt_file="Rendelés.csv"
+input_file="Ettermek.csv"
+input_file0="Prices.csv"
 input_file1="Nyitvatartas.txt"
 justify_entry="center"
 text_type_entry="Arial"
@@ -794,7 +794,7 @@ def Megrendelem():
 def Rendeles_torles():
     global c
     clear_menu()
-    os.remove("Rendeles.txt")
+    os.remove("Rendeles.csv")
     Kattintas0 = Label(root, text="A Rendelés törlésre került!", font=(text_type, ts)).grid(row=c, columnspan=5)
 
 if __name__ == "__main__":

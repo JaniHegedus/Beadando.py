@@ -5,9 +5,9 @@ Rendeles és Prices txt fájl melyek módosításával módosul a program adatb�
 ***config.ini***:
 
 [my_files]\
-txt_file = Rendeles.txt\
-input_file=Ettermek.txt\
-input_file0=Prices.txt
+txt_file = Rendeles.csv\
+input_file=Ettermek.csv\
+input_file0=Prices.csv
 
 [Text]\
 Text_size=25\
