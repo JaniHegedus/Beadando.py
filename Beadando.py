@@ -33,8 +33,9 @@ highlightbackground_entry="black"
 highlightcolor_entry="blue"
 highlightthickness_entry=1
 bd_entry=0
+encoding_in="utf-8"
+encoding_out="utf-8"
 """
-
 matrix = []
 matrix0 = []
 matrix1 = []
@@ -53,6 +54,8 @@ config.sections()
 txt_file = config['my_files']['txt_file']
 input_file = config['my_files']['input_file']
 input_file0 = config['my_files']['input_file0']
+encoding_in=config['my_files']['encoding_in']
+encoding_out=config['my_files']['encoding_out']
 ts = int(config['Text']['Text_size'])
 text_type = config['Text']['text_type']
 Text_color = config['Text']['Text_color']
@@ -85,14 +88,14 @@ if fullscreen:
 else:
     root.geometry("1920x740")
 
-with io.open(input_file, "r", encoding="utf-8") as fbee:
+with io.open(input_file, "r", encoding=encoding_in) as fbee:
     for sor in fbee:
         kis_lista = []
         sor = sor.strip().split()
         for elem in sor:
             kis_lista.append(elem)
         matrix.append(kis_lista)
-with io.open(input_file0, "r", encoding="utf-8") as fbeee:
+with io.open(input_file0, "r", encoding=encoding_in) as fbeee:
     for sor in fbeee:
         kis_lista = []
         sor = sor.strip().split()
@@ -403,7 +406,7 @@ def etlap_frissit():
 
 
 if rendelt > 0:
-    with io.open(txt_file, "w", encoding="utf-8") as fki:
+    with io.open(txt_file, "w", encoding=encoding_out) as fki:
         fki.write(Étterem().nev(b) + "\n")
         rendelt = 0
 
@@ -523,7 +526,7 @@ def b_csokkento():
     clear_screen()
     etlap_frissit()
     if rendelt > 0:
-        with io.open(txt_file, "a", encoding="utf-8") as fki:
+        with io.open(txt_file, "a", encoding=encoding_out) as fki:
             fki.write("\n" + Étterem().nev(b) + "\n")
         rendelt = 0
 
@@ -542,7 +545,7 @@ def b_novelo():
     Menu_0 = Label(root, text=Étterem().nev(b), font=(text_type, ts)).grid(row=0, column=2)
     # print(b)
     if rendelt > 0:
-        with io.open(txt_file, "a", encoding="utf-8") as fki:
+        with io.open(txt_file, "a", encoding=encoding_out) as fki:
             fki.write("\n" + Étterem().nev(b) + "\n")
         rendelt = 0
 
@@ -624,7 +627,7 @@ def sajatmenu():
 
 
 def kiir():
-    with io.open(txt_file, "a", encoding="utf-8") as fki:
+    with io.open(txt_file, "a", encoding=encoding_out) as fki:
         fki.write(sajatmenu.foetel + " " + sajatmenu.koret + " " + sajatmenu.ital + " " + sajatmenu.ar + "\n")
     # fki.write()
     return sajatmenu.foetel, sajatmenu.koret, sajatmenu.ital, sajatmenu.ar
@@ -635,9 +638,9 @@ def Menu01():
     rendelt += 1
     clear_menu()
     for sor in Menü().Menu_1():
-        with io.open(txt_file, "a", encoding="utf-8") as fki:
+        with io.open(txt_file, "a", encoding=encoding_out) as fki:
             fki.write(sor)
-    with io.open(txt_file, "a", encoding="utf-8") as fki:
+    with io.open(txt_file, "a", encoding=encoding_out) as fki:
         fki.write("\n")
     Kattintas0 = Label(root, text="Az első menüt választotta!", font=(text_type, ts)).grid(row=c, columnspan=5)
     print(Menü().Menu_3())
@@ -649,9 +652,9 @@ def Menu02():
     clear_menu()
     print(Menü().Menu_2())
     for sor in Menü().Menu_2():
-        with io.open(txt_file, "a", encoding="utf-8") as fki:
+        with io.open(txt_file, "a", encoding=encoding_out) as fki:
             fki.write(sor)
-    with io.open(txt_file, "a", encoding="utf-8") as fki:
+    with io.open(txt_file, "a", encoding=encoding_out) as fki:
         fki.write("\n")
     Kattintas0 = Label(root, text="A második menüt választotta!", font=(text_type, ts)).grid(row=c, columnspan=5)
 
@@ -661,9 +664,9 @@ def Menu03():
     rendelt += 1
     clear_menu()
     for sor in Menü().Menu_3():
-        with io.open(txt_file, "a", encoding="utf-8") as fki:
+        with io.open(txt_file, "a", encoding=encoding_out) as fki:
             fki.write(sor)
-    with io.open(txt_file, "a", encoding="utf-8") as fki:
+    with io.open(txt_file, "a", encoding=encoding_out) as fki:
         fki.write("\n")
 
     print(Menü().Menu_3())
@@ -675,9 +678,9 @@ def Menu04():
     rendelt += 1
     clear_menu()
     for sor in Menü().Menu_4():
-        with io.open(txt_file, "a", encoding="utf-8") as fki:
+        with io.open(txt_file, "a", encoding=encoding_out) as fki:
             fki.write(sor)
-    with io.open(txt_file, "a", encoding="utf-8") as fki:
+    with io.open(txt_file, "a", encoding=encoding_out) as fki:
         fki.write("\n")
     print(Menü().Menu_4())
     Kattintas0 = Label(root, text="A negyedik menüt választotta!", font=(text_type, ts)).grid(row=c, columnspan=5)
@@ -759,7 +762,6 @@ def grandtotal():
     global grand_total
     grand_total = 0
     clear_menu()
-    clear_screen()
     try:
         for sor in lista:
             if len(sor) > 4:
@@ -795,7 +797,7 @@ def Megrendelem():
 def Rendeles_torles():
     global c
     clear_menu()
-    os.remove("Rendeles.csv")
+    os.remove(txt_file)
     Kattintas0 = Label(root, text="A Rendelés törlésre került!", font=(text_type, ts)).grid(row=c, columnspan=5)
 
 if __name__ == "__main__":

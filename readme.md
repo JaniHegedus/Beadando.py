@@ -8,6 +8,8 @@ Rendeles és Prices txt fájl melyek módosításával módosul a program adatb�
 txt_file = Rendeles.csv\
 input_file=Ettermek.csv\
 input_file0=Prices.csv
+encoding_in = utf-8\
+encoding_out = utf-8\
 
 [Text]\
 Text_size=25\
