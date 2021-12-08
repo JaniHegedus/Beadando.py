@@ -771,14 +771,15 @@ def grandtotal():
                         print(int(sor[4][:3]))
                         grand_total += int(sor[4][:3])
     except IndexError:
-        if len(sor) > 3:
-            if sor[3] != "0Ft":
-                if len(sor[3]) > 4:
-                    print(int(sor[3][:3]))
-                    grand_total += int(sor[3][:4])
-                else:
-                    print(int(sor[3][:3]))
-                    grand_total += int(sor[3][:3])
+        for sor in lista:
+            if len(sor) > 3:
+                if sor[3] != "0Ft":
+                    if len(sor[3]) > 4:
+                        print(int(sor[3][:3]))
+                        grand_total += int(sor[3][:4])
+                    else:
+                        print(int(sor[3][:3]))
+                        grand_total += int(sor[3][:3])
     Kattintas0 = Label(root, text=str(grand_total) + "Ft fizetendő a futárnál", font=(text_type, ts)).grid(row=c,
                                                                                                            columnspan=5)
     c += 1
