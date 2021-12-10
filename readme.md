@@ -2,48 +2,50 @@ A program config.ini fájljában állíthatóak a grafikus felület tulajdonság
 A Beadandó nevü fájlhoz tartozik az Ettermek,\
 Rendeles és Prices txt fájl melyek módosításával módosul a program adatbázisa
 
+A Beadando.exe fájl a python file-ból lett legenerálva auto-py-to-exe segítségével!\
+Futttatható fájl, a beállításai változtathatók a config fájlon keresztül!
+
 ***config.ini***:
 
-
-[root]
+<span style="color: orange">[root]</span>\
 root_title=Etelrendeles\
 root_icon=my_ico.ico
 
-[my_files]\
-txt_file = Rendeles.csv\
-input_file=Ettermek.csv\
-input_file0=Prices.csv\
+<span style="color: orange">[my_files]</span>\
+txt_file = Rendeles.txt\
+input_file = Ettermek.txt\
+input_file0 = Prices.txt\
 encoding_in = utf-8\
 encoding_out = utf-8
 
-[Text]\
-Text_size=25\
-text_type= Arial\
-Text_color =blue\
+<span style="color: orange">[Text]</span>\
+Text_size = 20\
+text_type = Arial\
+Text_color = blue\
 Bg_color = white\
-Important_text_color=Red
+Important_text_color = Red\
+text_justify = center
 
-[Entry]\
-justify_entry=center\
-text_type_entry=Arial\
-text_size_entry=22\
-width_entry=18\
-bg_entry=white\
-fg_entry=red\
-disabledforeground_entry=red\
-disabledbackground_entry=red\
-highlightbackground_entry=black\
-highlightcolor_entry=blue\
-highlightthickness_entry=1\
-bd_entry=0
+<span style="color: orange">[Entry]</span>\
+justify_entry = center\
+text_type_entry = Arial\
+text_size_entry = 20\
+width_entry = 18\
+bg_entry = white\
+fg_entry = orange\
+disabledforeground_entry = red\
+disabledbackground_entry = red\
+highlightbackground_entry = black\
+highlightcolor_entry = blue\
+highlightthickness_entry = 1\
+bd_entry = 0
 
-[other]\
-Buttonsize_x=40\
-Buttonsize_y=10
+<span style="color: orange">[other]</span>\
+Buttonsize_x = 40\
+Buttonsize_y = 10
 
 Fullscreen = True\
-custom_resolution=1920x740
-
+custom_resolution = 1920x1080
 
 Opciók átállításával lehet változtatni a program megjelenítésében
 
