@@ -628,9 +628,9 @@ def Calculate():  # Saját menü számítása
         elif entry2.lower() == eleme[0]:
             Ár += int(eleme[1])
 
-    Válasz = ("Rendelés: \n" + entry0 + " " + "\n" + entry1 + " " + entry2 + "\n Ár: " + str(Ár) + "Ft")
+    válasz = ("Rendelés: \n" + entry0 + " " + "\n" + entry1 + " " + entry2 + "\n Ár: " + str(Ár) + "Ft")
 
-    Label(root, text=Válasz, font=(text_type, ts)).grid(row=6, rowspan=2, column=3)
+    Label(root, text=válasz, font=(text_type, ts)).grid(row=6, rowspan=2, column=3)
     if Ár != 0:
         return True
     else:
@@ -642,7 +642,6 @@ def sajatmenu():  # Saját menü meg
     Menu5_1.get()
     Menu5_2.get()
     Menu5_3.get()
-    ""
     if Calculate():
         clear_10()
         Label(root, text="A rendelés elfogadva", font=(text_type, ts)).grid(row=c, columnspan=5)
