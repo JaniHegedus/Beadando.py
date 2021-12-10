@@ -4,12 +4,17 @@ Rendeles és Prices txt fájl melyek módosításával módosul a program adatb�
 
 ***config.ini***:
 
+
+[root]
+root_title=Etelrendeles\
+root_icon=my_ico.ico
+
 [my_files]\
 txt_file = Rendeles.csv\
 input_file=Ettermek.csv\
-input_file0=Prices.csv
+input_file0=Prices.csv\
 encoding_in = utf-8\
-encoding_out = utf-8\
+encoding_out = utf-8
 
 [Text]\
 Text_size=25\
@@ -36,7 +41,8 @@ bd_entry=0
 Buttonsize_x=40\
 Buttonsize_y=10
 
-Fullscreen = True
+Fullscreen = True\
+custom_resolution=1920x740
 
 
 Opciók átállításával lehet változtatni a program megjelenítésében

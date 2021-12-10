@@ -41,7 +41,6 @@ encoding_in="utf-8"
 encoding_out="utf-8"
 root.title("Ételrendelés")
 root.iconbitmap('my_ico.ico')
-text_justify="center"
 """
 # Listák/Mátrixok/Változók definiálása:
 b = 1
@@ -69,10 +68,8 @@ encoding_out = config['my_files']['encoding_out']
 ts = int(config['Text']['Text_size'])
 text_type = config['Text']['text_type']
 Text_color = config['Text']['Text_color']
-Bg_color = config['Text']['Bg_color']
 Important_text_color = config['Text']['Important_text_color']
-text_justify=config['Text']['text_justify']
-
+Bg_color = config['Text']['Bg_color']
 x = int(config['other']['Buttonsize_x'])
 y = int(config['other']['Buttonsize_y'])
 
@@ -95,16 +92,16 @@ bd_entry = int(config['Entry']['bd_entry'])
 root = Tk()
 root.title(root_title)
 root.iconbitmap(root_icon)
+
 for o in range(14):  # sorbeállítás
     root.columnconfigure(o, minsize=25)
 
 root.overrideredirect(fullscreen)  # Teljesképernyő ki/be
-root.resizable(False,False)
+
 if fullscreen:
     root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))
 else:
     root.geometry(custom_resolution)
-
 
 # File beolvasás
 with io.open(input_file, "r", encoding=encoding_in) as fbee:
@@ -199,6 +196,23 @@ class Étterem:
             self.et+=Ettermek[3][1]
         """
         return self.et
+
+
+def Menu_4():
+    return Menü().foetel(b, 4) + " " + Menü().koret(b, 4) + " " + Menü().ital(b, 4) + " " + Menü().ar(b, 4)
+
+
+def Menu_3():
+    return Menü().foetel(b, 3) + " " + Menü().koret(b, 3) + " " + Menü().ital(b, 3) + " " + Menü().ar(b, 3)
+
+
+def Menu_2():
+    return Menü().foetel(b, 2) + " " + Menü().koret(b, 2) + " " + Menü().ital(b, 2) + " " + Menü().ar(b, 2)
+
+
+def Menu_1():
+    return Menü().foetel(b, 1) + " " + Menü().koret(b, 1) + " " + Menü().ital(b, 1) + " " + Menü().ar(b, 1)
+
 
 class Menü(Étterem):
     def __init__(self):
@@ -317,6 +331,7 @@ class Nyitvatartás(Étterem):
         return self.nyitva
     """
 
+
 class Napok(Enum):  # Enum használat (primitív de van)
     Hétfő = 0
     Kedd = 1
@@ -325,21 +340,6 @@ class Napok(Enum):  # Enum használat (primitív de van)
     Péntek = 4
     Szombat = 5
     Vasárnap = 6
-
-def Menu_4():
-    return Menü().foetel(b, 4) + " " + Menü().koret(b, 4) + " " + Menü().ital(b, 4) + " " + Menü().ar(b, 4)
-
-
-def Menu_3():
-    return Menü().foetel(b, 3) + " " + Menü().koret(b, 3) + " " + Menü().ital(b, 3) + " " + Menü().ar(b, 3)
-
-
-def Menu_2():
-    return Menü().foetel(b, 2) + " " + Menü().koret(b, 2) + " " + Menü().ital(b, 2) + " " + Menü().ar(b, 2)
-
-
-def Menu_1():
-    return Menü().foetel(b, 1) + " " + Menü().koret(b, 1) + " " + Menü().ital(b, 1) + " " + Menü().ar(b, 1)
 
 
 def Mai_Nap() -> str:  # (Ez a függvény nem akart classben működni)
@@ -363,31 +363,30 @@ def Nyitva(hetnapja, ora, nyitashk=8, nyitashv=10, zarashk=22, zarashv=20):  # (
 
 
 def clear_screen():  # Grafikus megjelenítésen a tartalom törlése, mivel nem találtam label törlő lehetőséget
-
     a = 2
     g = 1
-    Label(root, text="                                          " , font=(text_type, ts), justify=text_justify).grid(row=a, column=0)
-    Label(root, text="                     " , font=(text_type, ts), justify=text_justify).grid(row=a, column=1)
-    Label(root, text="                     " , font=(text_type, ts), justify=text_justify).grid(row=a, column=2)
-    Label(root, text="                     " , font=(text_type, ts), justify=text_justify).grid(row=a, column=3)
+    Label(root, text="                                          ", font=(text_type, ts)).grid(row=a, column=0)
+    Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=1)
+    Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=2)
+    Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=3)
     a += 1
     g += 1
-    Label(root, text="                                          " , font=(text_type, ts), justify=text_justify).grid(row=a, column=0)
-    Label(root, text="                     " , font=(text_type, ts), justify=text_justify).grid(row=a, column=1)
-    Label(root, text="                     " , font=(text_type, ts), justify=text_justify).grid(row=a, column=2)
-    Label(root, text="                     " , font=(text_type, ts), justify=text_justify).grid(row=a, column=3)
+    Label(root, text="                                          ", font=(text_type, ts)).grid(row=a, column=0)
+    Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=1)
+    Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=2)
+    Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=3)
     a += 1
     g += 1
-    Label(root, text="                                          " , font=(text_type, ts), justify=text_justify).grid(row=a, column=0)
-    Label(root, text="                     " , font=(text_type, ts), justify=text_justify).grid(row=a, column=1)
-    Label(root, text="                     " , font=(text_type, ts), justify=text_justify).grid(row=a, column=2)
-    Label(root, text="                     " , font=(text_type, ts), justify=text_justify).grid(row=a, column=3)
+    Label(root, text="                                          ", font=(text_type, ts)).grid(row=a, column=0)
+    Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=1)
+    Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=2)
+    Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=3)
     a += 1
     g += 1
-    Label(root, text="                                          " , font=(text_type, ts), justify=text_justify).grid(row=a, column=0)
-    Label(root, text="                     " , font=(text_type, ts), justify=text_justify).grid(row=a, column=1)
-    Label(root, text="                     " , font=(text_type, ts), justify=text_justify).grid(row=a, column=2)
-    Label(root, text="                     " , font=(text_type, ts), justify=text_justify).grid(row=a, column=3)
+    Label(root, text="                                          ", font=(text_type, ts)).grid(row=a, column=0)
+    Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=1)
+    Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=2)
+    Label(root, text="                     ", font=(text_type, ts)).grid(row=a, column=3)
 
 
 def clear_menu():  # Grafikus megjelenítésen a tartalom törlése, mivel nem találtam label törlő lehetőséget
@@ -433,31 +432,31 @@ def etlap_frissit():  # Ételek frissítése az éttermek közötti ugrálás ut
     global b
     a = 2
     g = 1
-    Label(root, text=Menü().foetel(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=0)
-    Label(root, text=Menü().koret(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=1)
-    Label(root, text=Menü().ital(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=2)
-    Label(root, text=Menü().ar(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=3)
+    Label(root, text=Menü().foetel(b, g), font=(text_type, ts)).grid(row=a, column=0)
+    Label(root, text=Menü().koret(b, g), font=(text_type, ts)).grid(row=a, column=1)
+    Label(root, text=Menü().ital(b, g), font=(text_type, ts)).grid(row=a, column=2)
+    Label(root, text=Menü().ar(b, g), font=(text_type, ts)).grid(row=a, column=3)
     a += 1
     g += 1
-    Label(root, text=Menü().foetel(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=0)
-    Label(root, text=Menü().koret(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=1)
-    Label(root, text=Menü().ital(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=2)
-    Label(root, text=Menü().ar(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=3)
+    Label(root, text=Menü().foetel(b, g), font=(text_type, ts)).grid(row=a, column=0)
+    Label(root, text=Menü().koret(b, g), font=(text_type, ts)).grid(row=a, column=1)
+    Label(root, text=Menü().ital(b, g), font=(text_type, ts)).grid(row=a, column=2)
+    Label(root, text=Menü().ar(b, g), font=(text_type, ts)).grid(row=a, column=3)
     a += 1
     g += 1
-    Label(root, text=Menü().foetel(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=0)
-    Label(root, text=Menü().koret(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=1)
-    Label(root, text=Menü().ital(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=2)
-    Label(root, text=Menü().ar(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=3)
+    Label(root, text=Menü().foetel(b, g), font=(text_type, ts)).grid(row=a, column=0)
+    Label(root, text=Menü().koret(b, g), font=(text_type, ts)).grid(row=a, column=1)
+    Label(root, text=Menü().ital(b, g), font=(text_type, ts)).grid(row=a, column=2)
+    Label(root, text=Menü().ar(b, g), font=(text_type, ts)).grid(row=a, column=3)
     a += 1
     g += 1
-    Label(root, text=Menü().foetel(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=0)
-    Label(root, text=Menü().koret(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=1)
-    Label(root, text=Menü().ital(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=2)
-    Label(root, text=Menü().ar(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=3)
-    Label(root, text="                                      " , font=(text_type, ts), justify=text_justify).grid(row=0, column=2)
+    Label(root, text=Menü().foetel(b, g), font=(text_type, ts)).grid(row=a, column=0)
+    Label(root, text=Menü().koret(b, g), font=(text_type, ts)).grid(row=a, column=1)
+    Label(root, text=Menü().ital(b, g), font=(text_type, ts)).grid(row=a, column=2)
+    Label(root, text=Menü().ar(b, g), font=(text_type, ts)).grid(row=a, column=3)
+    Label(root, text="                                      ", font=(text_type, ts)).grid(row=0, column=2)
 
-    Label(root, text=Étterem().nev(b) , font=(text_type, ts), justify=text_justify).grid(row=0, column=2)
+    Label(root, text=Étterem().nev(b), font=(text_type, ts)).grid(row=0, column=2)
 
 
 if rendelt > 0:  # Ha rendelt az adott étteremből akkor kiírja az étterem nevét
@@ -468,6 +467,9 @@ if rendelt > 0:  # Ha rendelt az adott étteremből akkor kiírja az étterem ne
 
 def kepernyo():  # A grafikus felület megjelenítése
     global c
+    global Menu5_3
+    global Menu5_2
+    global Menu5_1
     clear_menu()
     hetnapjaa = int(datetime.today().weekday())
     oraa = int(datetime.now().strftime("%H"))
@@ -483,45 +485,44 @@ def kepernyo():  # A grafikus felület megjelenítése
 
     Button(root, text="<", padx=x, pady=y, command=b_csokkento, fg=Text_color, bg=Bg_color,
            font=(text_type, ts)).grid(row=a, column=0)
-    Label(root, text=Étterem().nev(b) , font=(text_type, ts), justify=text_justify).grid(row=a, column=2)
+    Label(root, text=Étterem().nev(b), font=(text_type, ts)).grid(row=a, column=2)
     Button(root, text=">", padx=x, pady=y, command=b_novelo, fg=Text_color, bg=Bg_color,
            font=(text_type, ts)).grid(row=a, column=4)
     a += 1
-    Label(root, text="Mai nap:\n" + Mai_Nap() , font=(text_type, ts), justify=text_justify).grid(row=a, column=5)
-    Label(root, text="Menü:" , font=(text_type, ts), justify=text_justify).grid(row=a, column=0)
+    Label(root, text="Mai nap:\n" + Mai_Nap(), font=(text_type, ts)).grid(row=a, column=5)
+    Label(root, text="Menü:", font=(text_type, ts)).grid(row=a, column=0)
     a += 1
     g = 1
-    Label(root, text=Menü().foetel(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=0)
-    Label(root, text=Menü().koret(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=1)
-    Label(root, text=Menü().ital(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=2)
-    Label(root, text=Menü().ar(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=3)
+    Label(root, text=Menü().foetel(b, g), font=(text_type, ts)).grid(row=a, column=0)
+    Label(root, text=Menü().koret(b, g), font=(text_type, ts)).grid(row=a, column=1)
+    Label(root, text=Menü().ital(b, g), font=(text_type, ts)).grid(row=a, column=2)
+    Label(root, text=Menü().ar(b, g), font=(text_type, ts)).grid(row=a, column=3)
     if Nyitva(hetnapjaa, oraa):
-        Label(root, text="Nyitva" , font=(text_type, ts), justify=text_justify, fg=Important_text_color).grid(row=a, column=5)
+        Label(root, text="Nyitva", font=(text_type, ts), fg=Important_text_color).grid(row=a, column=5)
     else:
-        Label(root, text="Zárva" , font=(text_type, ts), justify=text_justify, fg=Important_text_color).grid(row=a, column=5)
+        Label(root, text="Zárva", font=(text_type, ts), fg=Important_text_color).grid(row=a, column=5)
     a += 1
     g += 1
-    Label(root, text=Menü().foetel(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=0)
-    Label(root, text=Menü().koret(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=1)
-    Label(root, text=Menü().ital(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=2)
-    Label(root, text=Menü().ar(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=3)
+    Label(root, text=Menü().foetel(b, g), font=(text_type, ts)).grid(row=a, column=0)
+    Label(root, text=Menü().koret(b, g), font=(text_type, ts)).grid(row=a, column=1)
+    Label(root, text=Menü().ital(b, g), font=(text_type, ts)).grid(row=a, column=2)
+    Label(root, text=Menü().ar(b, g), font=(text_type, ts)).grid(row=a, column=3)
     a += 1
     g += 1
-    Label(root, text=Menü().foetel(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=0)
-    Label(root, text=Menü().koret(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=1)
-    Label(root, text=Menü().ital(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=2)
-    Label(root, text=Menü().ar(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=3)
+    Label(root, text=Menü().foetel(b, g), font=(text_type, ts)).grid(row=a, column=0)
+    Label(root, text=Menü().koret(b, g), font=(text_type, ts)).grid(row=a, column=1)
+    Label(root, text=Menü().ital(b, g), font=(text_type, ts)).grid(row=a, column=2)
+    Label(root, text=Menü().ar(b, g), font=(text_type, ts)).grid(row=a, column=3)
     a += 1
     g += 1
-    Label(root, text=Menü().foetel(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=0)
-    Label(root, text=Menü().koret(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=1)
-    Label(root, text=Menü().ital(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=2)
-    Label(root, text=Menü().ar(b, g) , font=(text_type, ts), justify=text_justify).grid(row=a, column=3)
+    Label(root, text=Menü().foetel(b, g), font=(text_type, ts)).grid(row=a, column=0)
+    Label(root, text=Menü().koret(b, g), font=(text_type, ts)).grid(row=a, column=1)
+    Label(root, text=Menü().ital(b, g), font=(text_type, ts)).grid(row=a, column=2)
+    Label(root, text=Menü().ar(b, g), font=(text_type, ts)).grid(row=a, column=3)
     a += 1
-    Label(root, text="Saját:" , font=(text_type, ts), justify=text_justify).grid(row=a, column=0)
+    Label(root, text="Saját:", font=(text_type, ts)).grid(row=a, column=0)
 
     a += 1
-    global Menu5_1
     Menu5_1 = Entry(root, font=FontOfEntryList, justify=justify_entry, width=width_entry, bg=bg_entry, fg=fg_entry,
                     disabledbackground=disabledbackground_entry, disabledforeground=disabledforeground_entry,
                     highlightbackground=highlightbackground_entry, highlightcolor=highlightcolor_entry,
@@ -529,14 +530,12 @@ def kepernyo():  # A grafikus felület megjelenítése
     Menu5_1.grid(row=a, column=0, padx=x, pady=y, ipady=y)
     Menu5_1.insert(0, "Fő étel")
     # entry0.set("Főétel")
-    global Menu5_2
     Menu5_2 = Entry(root, font=FontOfEntryList, justify=justify_entry, width=width_entry, bg=bg_entry, fg=fg_entry,
                     disabledbackground=disabledbackground_entry, disabledforeground=disabledforeground_entry,
                     highlightbackground=highlightbackground_entry, highlightcolor=highlightcolor_entry,
                     highlightthickness=highlightthickness_entry, bd=bd_entry)
     Menu5_2.grid(row=a, column=1, padx=x, pady=y, ipady=y)
     Menu5_2.insert(0, "Köret")
-    global Menu5_3
     Menu5_3 = Entry(root, font=FontOfEntryList, justify=justify_entry, width=width_entry, bg=bg_entry, fg=fg_entry,
                     disabledbackground=disabledbackground_entry, disabledforeground=disabledforeground_entry,
                     highlightbackground=highlightbackground_entry, highlightcolor=highlightcolor_entry,
@@ -559,16 +558,16 @@ def kepernyo():  # A grafikus felület megjelenítése
     a += 1
 
     Button(root, text="Hétközbeni nyitvatartás", padx=x, pady=y, command=Menu05, fg=Text_color,
-           bg=Bg_color , font=(text_type, ts), justify=text_justify).grid(row=a, column=1)
+           bg=Bg_color, font=(text_type, ts)).grid(row=a, column=1)
     Button(root, text="Hétvégi nyitvatartás", padx=x, pady=y, command=Menu06, fg=Text_color,
-           bg=Bg_color , font=(text_type, ts), justify=text_justify).grid(row=a, column=2)
+           bg=Bg_color, font=(text_type, ts)).grid(row=a, column=2)
     a += 1
     c = a
     a += 1
     Button(root, text="Kilépés", padx=x, pady=y, command=root.quit, fg=Text_color, bg=Bg_color,
            font=(text_type, ts)).grid(row=a, column=5)
     Button(root, text="Ételek, Italok", padx=x, pady=y, command=Ételek_Italok, fg=Text_color,
-           bg=Bg_color , font=(text_type, ts), justify=text_justify).grid(row=a, column=0)
+           bg=Bg_color, font=(text_type, ts)).grid(row=a, column=0)
 
 
 def b_csokkento():  # Éttermek közötti ugrálás
@@ -598,8 +597,8 @@ def b_novelo():  # Éttermek közötti ugrálás
     clear_screen()
     etlap_frissit()
 
-    Label(root, text="                                      " , font=(text_type, ts), justify=text_justify).grid(row=0, column=2)
-    Label(root, text=Étterem().nev(b) , font=(text_type, ts), justify=text_justify).grid(row=0, column=2)
+    Label(root, text="                                      ", font=(text_type, ts)).grid(row=0, column=2)
+    Label(root, text=Étterem().nev(b), font=(text_type, ts)).grid(row=0, column=2)
     # print(b)
     if rendelt > 0:
         with io.open(txt_file, "a", encoding=encoding_out) as fki:
@@ -609,10 +608,13 @@ def b_novelo():  # Éttermek közötti ugrálás
 
 def Calculate():  # Saját menü számítása
     global elem
+    global Menu5_1
+    global Menu5_2
+    global Menu5_3
+    global Ár
     entry0 = Menu5_1.get()
     entry1 = Menu5_2.get()
     entry2 = Menu5_3.get()
-    global Ár
     Ár = 0
     for elem in matrix0:
         try:
@@ -628,39 +630,11 @@ def Calculate():  # Saját menü számítása
 
     Válasz = ("Rendelés: \n" + entry0 + " " + "\n" + entry1 + " " + entry2 + "\n Ár: " + str(Ár) + "Ft")
 
-    Label(root, text=Válasz , font=(text_type, ts), justify=text_justify).grid(row=6, rowspan=2, column=3)
+    Label(root, text=Válasz, font=(text_type, ts)).grid(row=6, rowspan=2, column=3)
     if Ár != 0:
         return True
     else:
         return False
-    """
-    for j in range(4):
-        if entry0.lower() == Menü().foetel(j,1):
-            Ár += 950
-        if entry1.lower()==Menü().koret(j,1):
-            Ár+=150
-        if entry2.lower()==Menü().ital(j,1):
-            Ár+=100
-        if entry0.lower()==Menü().foetel(j,2):
-            Ár+=950
-        if entry1.lower()==Menü().koret(j,2):
-            Ár+=100
-        if entry2.lower()==Menü().ital(j,2):
-            Ár+=120
-        if entry0.lower()==Menü().foetel(j,3):
-            Ár+=1000
-        if entry1.lower()==Menü().koret(j,3):
-            Ár+=150
-        if entry2.lower()==Menü().ital(j,3):
-            Ár+=90
-        if entry0.lower()==Menü().foetel(j,4):
-            Ár+=650
-        if entry1.lower()==Menü().koret(j,4):
-            Ár+=200
-        if entry2.lower()==Menü().ital(j,4):
-            Ár+=110
-    """
-
 
 def sajatmenu():  # Saját menü meg
     global c
@@ -671,10 +645,10 @@ def sajatmenu():  # Saját menü meg
     ""
     if Calculate():
         clear_10()
-        Label(root, text="A rendelés elfogadva" , font=(text_type, ts), justify=text_justify).grid(row=c, columnspan=5)
+        Label(root, text="A rendelés elfogadva", font=(text_type, ts)).grid(row=c, columnspan=5)
     else:
         clear_10()
-        Label(root, text="Nincs Étel/Ital kiválasztva" , font=(text_type, ts), justify=text_justify).grid(row=c, columnspan=5)
+        Label(root, text="Nincs Étel/Ital kiválasztva", font=(text_type, ts)).grid(row=c, columnspan=5)
     sajatmenu.foetel = Menu5_1.get()
     sajatmenu.koret = Menu5_2.get()
     sajatmenu.ital = Menu5_3.get()
@@ -704,7 +678,7 @@ def Menu01():
             fki.write(sor)
     with io.open(txt_file, "a", encoding=encoding_out) as fki:
         fki.write("\n")
-    Label(root, text="Az első menüt választotta!" , font=(text_type, ts), justify=text_justify).grid(row=a, columnspan=5)
+    Label(root, text="Az első menüt választotta!", font=(text_type, ts)).grid(row=a, columnspan=5)
 
 
 def Menu02():
@@ -712,6 +686,7 @@ def Menu02():
     global fki
     global sor
     rendelt += 1
+    a = 10
     clear_10()
     # print(Menü().Menu_2())
     for sor in Menu_2():
@@ -719,7 +694,7 @@ def Menu02():
             fki.write(sor)
     with io.open(txt_file, "a", encoding=encoding_out) as fki:
         fki.write("\n")
-    Label(root, text="A második menüt választotta!" , font=(text_type, ts), justify=text_justify).grid(row=c, columnspan=5)
+    Label(root, text="A második menüt választotta!", font=(text_type, ts)).grid(row=a, columnspan=5)
 
 
 def Menu03():
@@ -736,7 +711,7 @@ def Menu03():
     with io.open(txt_file, "a", encoding=encoding_out) as fki:
         fki.write("\n")
 
-    Label(root, text="A harmadik menüt választotta!" , font=(text_type, ts), justify=text_justify).grid(row=a, columnspan=5)
+    Label(root, text="A harmadik menüt választotta!", font=(text_type, ts)).grid(row=a, columnspan=5)
 
 
 def Menu04():
@@ -752,7 +727,7 @@ def Menu04():
             fki.write(sor)
     with io.open(txt_file, "a", encoding=encoding_out) as fki:
         fki.write("\n")
-    Label(root, text="A negyedik menüt választotta!" , font=(text_type, ts), justify=text_justify).grid(row=a, columnspan=5)
+    Label(root, text="A negyedik menüt választotta!", font=(text_type, ts)).grid(row=a, columnspan=5)
 
 
 def Menu05():
@@ -773,8 +748,9 @@ def Ételek_Italok():  # A lehetséges választható Ételek és Italok megjelen
     global nyitva
     global sor
 
-    global c
     c = 12
+    global b
+    b -= 1
     clear_menu()
     oszlop_0 = ""
     oszlop_1 = ""
@@ -782,31 +758,33 @@ def Ételek_Italok():  # A lehetséges választható Ételek és Italok megjelen
     oszlop_3 = ""
     ""
     db = 0
-
-    for sor in matrix0:
-        if len(sor) == 3:
-            if db < 6:
-                oszlop_0 += sor[0] + " " + sor[1] + " \n " + sor[2] + "Ft\n"
-            elif 6 <= db < 11:
-                oszlop_1 += sor[0] + " " + sor[1] + " \n " + sor[2] + "Ft\n"
-            elif 11 <= db < 16:
-                oszlop_2 += sor[0] + " " + sor[1] + " \n " + sor[2] + "Ft\n"
-            elif db >= 16:
-                oszlop_3 += sor[0] + " " + sor[1] + " \n " + sor[2] + "Ft\n"
-        else:
-            if db < 6:
-                oszlop_0 += sor[0] + " " + sor[1] + " - " + sor[2] + "Ft\n"
-            elif 6 <= db < 11:
-                oszlop_1 += sor[0] + " - " + sor[1] + "Ft\n"
-            elif 11 <= db < 16:
-                oszlop_2 += sor[0] + " - " + sor[1] + "Ft\n"
-            elif 16 <= db < 20:
-                oszlop_3 += sor[0] + " - " + sor[1] + "Ft\n"
-        db += 1
-    Label(root, text=oszlop_0 , font=(text_type, ts), justify=text_justify).grid(row=c, column=0)
-    Label(root, text=oszlop_1 , font=(text_type, ts), justify=text_justify).grid(row=c, column=1)
-    Label(root, text=oszlop_2 , font=(text_type, ts), justify=text_justify).grid(row=c, column=2)
-    Label(root, text=oszlop_3 , font=(text_type, ts), justify=text_justify).grid(row=c, column=3)
+    try:
+        for sor in matrix0:
+            if len(sor) == 3:
+                if db < 6:
+                    oszlop_0 += sor[0] + " " + sor[1] + " \n " + sor[2] + "Ft\n"
+                elif 6 <= db < 11:
+                    oszlop_1 += sor[0] + " " + sor[1] + " \n " + sor[2] + "Ft\n"
+                elif 11 <= db < 16:
+                    oszlop_2 += sor[0] + " " + sor[1] + " \n " + sor[2] + "Ft\n"
+                elif db >= 16:
+                    oszlop_3 += sor[0] + " " + sor[1] + " \n " + sor[2] + "Ft\n"
+            else:
+                if db < 6:
+                    oszlop_0 += sor[0] + " " + sor[1] + " - " + sor[2] + "Ft\n"
+                elif 6 <= db < 11:
+                    oszlop_1 += sor[0] + " - " + sor[1] + "Ft\n"
+                elif 11 <= db < 16:
+                    oszlop_2 += sor[0] + " - " + sor[1] + "Ft\n"
+                elif 16 <= db < 20:
+                    oszlop_3 += sor[0] + " - " + sor[1] + "Ft\n"
+            db += 1
+    except IndexError:
+        b = 4
+    Label(root, text=oszlop_0, font=(text_type, ts)).grid(row=c, column=0)
+    Label(root, text=oszlop_1, font=(text_type, ts)).grid(row=c, column=1)
+    Label(root, text=oszlop_2, font=(text_type, ts)).grid(row=c, column=2)
+    Label(root, text=oszlop_3, font=(text_type, ts)).grid(row=c, column=3)
     if nyitva == 0:
         nyitva = 1
     elif nyitva == 1:
@@ -821,7 +799,7 @@ def grandtotal():  # Végső Fizetendő Ár kiszámító a Rendelés file-ból
     global elem
     global kis_lista
     clear_menu()
-    a=10
+
     lista = []
     fbe = open(txt_file, "r")
     for sor in fbe:
@@ -832,7 +810,7 @@ def grandtotal():  # Végső Fizetendő Ár kiszámító a Rendelés file-ból
         lista.append(kis_lista)
     global grand_total
     grand_total = 0
-    clear_10()
+    clear_menu()
     try:
         for sor in lista:
             if len(sor) > 4:
@@ -853,14 +831,14 @@ def grandtotal():  # Végső Fizetendő Ár kiszámító a Rendelés file-ból
                     else:
                         print(int(sor[3][:3]))
                         grand_total += int(sor[3][:3])
-    Label(root, text=str(grand_total) + "Ft fizetendő a futárnál" , font=(text_type, ts), justify=text_justify).grid(row=a,
+    Label(root, text=str(grand_total) + "Ft fizetendő a futárnál", font=(text_type, ts)).grid(row=c,
                                                                                               columnspan=5)
-    a += 1
+    c += 1
     Button(root, text="Megrendelem", padx=x, pady=y, command=Megrendelem, fg=Text_color, bg=Bg_color,
-           font=(text_type, ts)).grid(row=a, column=2)
+           font=(text_type, ts)).grid(row=c, column=2)
 
     Button(root, text="Rendelés törlése", padx=x, pady=y, command=Rendeles_torles, fg=Text_color,
-           bg=Bg_color , font=(text_type, ts), justify=text_justify).grid(row=a, column=1)
+           bg=Bg_color, font=(text_type, ts)).grid(row=c, column=1)
 
 
 def Megrendelem():  # Végső Fizetendő Ár kiszámító a Rendelés file-ból
@@ -869,11 +847,12 @@ def Megrendelem():  # Végső Fizetendő Ár kiszámító a Rendelés file-ból
 
 
 def Rendeles_torles():  # Rendelés törlése és Visszaigazolás
-    a=11
+    global c
+    c -= 1
     clear_menu()
     clear_10()
     os.remove(txt_file)
-    Label(root, text="A Rendelés törlésre került!" , font=(text_type, ts), justify=text_justify).grid(row=a, columnspan=5)
+    Label(root, text="A Rendelés törlésre került!", font=(text_type, ts)).grid(row=c, columnspan=5)
     a = 11
     Label(root,
           text="\n                                                                                           \n       "
